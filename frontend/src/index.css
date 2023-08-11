@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,300&family=Yeseva+One&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Josefin Sans", sans-serif;
+  }
+  
+  
+}
+a.active{
+  @apply text-red-900 border-b border-red-900
+  
+}
