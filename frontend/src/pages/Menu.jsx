@@ -3,15 +3,44 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 const Menu = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   useEffect(() => {
     fetch("http://localhost:4000/api/products/all").then((res) => {
-      res.json().then((data) => setProducts(data));
+      res.json().then((data) => {
+        setProducts(data);
+        setFilteredProducts(data);
+      });
     });
   }, []);
+  const handleCategoryChange = (e) => {
+    const categoryName = e.target.innerText;
+    setSelectedCategory(categoryName);
+    if (categoryName === "All") setFilteredProducts(products);
+    else
+      setFilteredProducts(
+        products.filter((prev) => prev.category === categoryName)
+      );
+  };
   return (
     <section className=" bg-white">
+      <div className="flex justify-center p-10 gap-6 [&>button]:rounded-3xl [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 [&>button]:text-lg [&>button]:py-2 [&>button]:px-5">
+        {["All", "Burger", "Pizza", "Pancake"].map((category, index) => (
+          <button
+            key={index}
+            className={`transition duration-500 hover:bg-red-500 hover:border-transparent ${
+              selectedCategory === category
+                ? "!bg-red-600 !text-white !border-transparent"
+                : ""
+            }`}
+            onClick={handleCategoryChange}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
       <div className=" w-5/6  mx-auto gap-2 p-4 flex flex-wrap justify-center">
-        {products.map((product, index) => (
+        {filteredProducts.map((product, index) => (
           <motion.div
             key={product._id}
             initial={{ scale: 0, opacity: 0 }}
