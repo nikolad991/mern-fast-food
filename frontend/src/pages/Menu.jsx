@@ -24,7 +24,7 @@ const Menu = () => {
   };
   return (
     <section className=" bg-white">
-      <div className="flex justify-center p-10 gap-6 [&>button]:rounded-3xl [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 [&>button]:text-lg [&>button]:py-2 [&>button]:px-5">
+      <div className="flex justify-center py-10 gap-6 [&>button]:rounded-3xl [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 [&>button]:text-lg [&>button]:py-2 [&>button]:px-5">
         {["All", "Burger", "Pizza", "Pancake"].map((category, index) => (
           <button
             key={index}
@@ -39,7 +39,7 @@ const Menu = () => {
           </button>
         ))}
       </div>
-      <div className=" w-5/6  mx-auto gap-2 p-4 flex flex-wrap justify-center">
+      <div className="xl:w-5/6  mx-auto gap-2 p-4 flex flex-wrap justify-center">
         {filteredProducts.map((product, index) => (
           <motion.div
             key={product._id}

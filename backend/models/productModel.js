@@ -23,7 +23,8 @@ const productSchema = mongoose.Schema({
         {
             name: String,
             choices: [String],
-            default: String
+            default: String,
+            additionalPrice:{type:Number, default:2}
         }
     ]
 
