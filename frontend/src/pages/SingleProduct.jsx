@@ -5,11 +5,14 @@ import {
   AiOutlineMinusSquare,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../redux/cartSlice";
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(0);
+  const dispatch = useDispatch();
   useEffect(() => {
     fetch(`http://localhost:4000/api/products/${params.id}`).then((res) =>
       res.json().then((data) => {
@@ -59,11 +62,15 @@ const SingleProduct = () => {
                         newProduct.options[optionIndex].default = choice;
                         setProduct(newProduct);
                       }}
-                      className={`px-3 py-2  border transition duration-500 hover:border-red-600 ${
+                      className={`flex flex-col items-center px-3 py-2  border transition duration-500 hover:border-red-600 ${
                         option.default === choice ? "border-red-800" : ""
                       }`}
                     >
-                      {choice}
+                      <span>{choice}</span>
+
+                      <span className="text-sm">
+                        (+${option.additionalPrice * index})
+                      </span>
                     </button>
                   );
                 })}
@@ -100,8 +107,8 @@ const SingleProduct = () => {
               <button
                 className=" flex items-center justify-center border-2 border-yellow-500 rounded px-4 py-10 transition-all duration-500 hover:bg-red-500 hover:text-white hover:border-transparent "
                 onClick={() => {
-                  const payload = { quantity, product };
-                  console.log(payload);
+                  const payload = { quantity, product, total };
+                  dispatch(addCartItem(payload));
                 }}
               >
                 <span>Add to cart</span>

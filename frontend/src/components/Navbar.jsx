@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Bars4Icon,
   MagnifyingGlassIcon,
@@ -16,6 +17,8 @@ import {
 
 import Logo from "../assets/food-logo-transparent.png";
 const Navbar = () => {
+  const cart = useSelector((state) => state.cart);
+
   const linkHover = "hover:text-red-600 transition-all duration-600";
   return (
     <nav className=" text-neutral-800 flex flex-col h-32 ">
@@ -63,12 +66,12 @@ const Navbar = () => {
         </div>
         <div className="flex h-7 gap-5">
           <MagnifyingGlassIcon className={`${linkHover} cursor-pointer`} />
-          <div className="flex relative">
+          <Link to="/cart" className="flex relative">
             <ShoppingCartIcon className={`${linkHover} cursor-pointer`} />
             <span className="absolute top-0 right-0 text-xs font-bold w-4 h-4 p-2 bg-red-300 rounded-full flex items-center justify-center">
-              3
+              {cart.length}
             </span>
-          </div>
+          </Link>
           <UserIcon className={`${linkHover} cursor-pointer`} />
         </div>
         <div className="border border-white h-12 w-12 md:hidden">

@@ -5,11 +5,12 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./pages/Cart.jsx";
 import Menu from "./pages/Menu.jsx";
-
 import Home from "./pages/Home.jsx";
 import Orders from "./pages/Orders.jsx";
 import Contact from "./pages/Contact.jsx";
 import SingleProduct from "./pages/SingleProduct.jsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,11 +28,14 @@ const router = createBrowserRouter([
       { path: "product/:id", element: <SingleProduct /> },
       { path: "/orders", element: <Orders /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/cart", element: <Cart/> },
     ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
