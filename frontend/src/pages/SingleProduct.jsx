@@ -107,7 +107,9 @@ const SingleProduct = () => {
               <button
                 className=" flex items-center justify-center border-2 border-yellow-500 rounded px-4 py-10 transition-all duration-500 hover:bg-red-500 hover:text-white hover:border-transparent "
                 onClick={() => {
-                  const payload = { quantity, product, total };
+                  const payload = JSON.parse(
+                    JSON.stringify({ quantity, product, total })
+                  );
                   dispatch(addCartItem(payload));
                 }}
               >

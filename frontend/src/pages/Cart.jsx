@@ -1,16 +1,22 @@
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCartItem } from "../redux/cartSlice";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   console.log(cart);
+  const dispatch = useDispatch();
+  const handleRemove = (id) => {
+    console.log(id);
+    dispatch(removeCartItem(id));
+  };
   return (
     <div className="min-h-screen flex flex-col gap-5 items-center justify-center">
       {cart.map((item, index) => (
         <motion.div
-          key={item.product._id}
+          key={item.id}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{
@@ -34,7 +40,7 @@ const Cart = () => {
               </div>{" "}
               <div>
                 {item.product?.options.map((option) => (
-                  <div>
+                  <div key={option.name}>
                     {option.name}: {option.default}
                   </div>
                 ))}
@@ -44,7 +50,7 @@ const Cart = () => {
             <div className="flex items-center  text-xl gap-2 ">
               <div className="font-semibold">${item.total}</div>
               <div className="text-red-500 text-3xl cursor-pointer">
-                <AiOutlineDelete />
+                <AiOutlineDelete onClick={() => handleRemove(item.id)} />
               </div>
             </div>
           </div>
