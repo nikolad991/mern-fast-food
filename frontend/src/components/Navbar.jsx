@@ -72,7 +72,9 @@ const Navbar = () => {
               {cart.length}
             </span>
           </Link>
-          <UserIcon className={`${linkHover} cursor-pointer`} />
+          <Link to="/register" className="flex">
+            <UserIcon className={`${linkHover} cursor-pointer`} />
+          </Link>
         </div>
         <div className="border border-white h-12 w-12 md:hidden">
           <Bars4Icon />
