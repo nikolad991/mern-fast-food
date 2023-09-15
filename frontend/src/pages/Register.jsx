@@ -22,7 +22,6 @@ const Register = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       try {
         const result = await register(values).unwrap();
         if (result) {
