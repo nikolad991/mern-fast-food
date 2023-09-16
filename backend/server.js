@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -14,6 +15,7 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.listen(PORT, () => {

@@ -2,12 +2,12 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
-import { useRegisterMutation } from "../redux/usersApiSlice";
+import { useLoginMutation, useRegisterMutation } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [register, { isLoading }] = useRegisterMutation();
+  const [login, { isLoading }] = useLoginMutation();
   const formik = useFormik({
     initialValues: { email: "", password: "" },
 
@@ -18,19 +18,15 @@ const Login = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
-      // try {
-      //   const result = await register(values).unwrap();
-      //   if (result) {
-      //     toast.success(
-      //       "Successfull registration.You can now log in using your username and password."
-      //     );
-      //     navigate("/login");
-      //   }
-      //   toast.success(result);
-      //   console.log(result);
-      // } catch (error) {
-      //   toast.error(error.data.error);
-      // }
+      try {
+        const result = await login(values).unwrap();
+        if (result) {
+          toast.success("Successfull login.");
+          console.log(result);
+        }
+      } catch (error) {
+        toast.error(error.data.error);
+      }
     },
   });
 

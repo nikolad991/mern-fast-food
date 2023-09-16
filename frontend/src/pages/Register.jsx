@@ -30,7 +30,7 @@ const Register = () => {
           );
           navigate("/login");
         }
-        toast.success(result);
+        
         console.log(result);
       } catch (error) {
         toast.error(error.data.error);
