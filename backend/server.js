@@ -11,8 +11,14 @@ mongoose
     `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.x8cnld4.mongodb.net/food-app?retryWrites=true&w=majority`
   )
   .then(() => console.log("Connected!"));
-
-app.use(cors());
+console.log(process.env.NODE_ENV);
+app.use(
+  cors({
+    credentials: true,
+    origin:
+      process.env.NODE_ENV === "development" ? "http://192.168.1.2:5173" : "",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

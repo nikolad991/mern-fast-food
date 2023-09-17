@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
+import Profile from "./pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/cart", element: <Cart /> },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
+      { path: "/profile", element: <Profile /> },
     ],
   },
 ]);

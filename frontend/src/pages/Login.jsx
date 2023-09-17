@@ -4,10 +4,12 @@ import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { useLoginMutation, useRegisterMutation } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/authSlice";
 const Login = () => {
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: { email: "", password: "" },
 
@@ -21,7 +23,9 @@ const Login = () => {
       try {
         const result = await login(values).unwrap();
         if (result) {
+          dispatch(setUser(result));
           toast.success("Successfull login.");
+          navigate("/");
           console.log(result);
         }
       } catch (error) {

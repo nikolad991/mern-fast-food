@@ -6,6 +6,7 @@ import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
   UserIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import {
   AiFillFacebook,
@@ -18,11 +19,12 @@ import {
 import Logo from "../assets/food-logo-transparent.png";
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
-
+  const { userData } = useSelector((state) => state.auth);
+  console.log(userData);
   const linkHover = "hover:text-red-600 transition-all duration-600";
   return (
-    <nav className=" text-neutral-800 flex flex-col h-32 ">
-      <div className="w-full px-10 py-1 text-white bg-neutral-800 flex justify-between">
+    <nav className=" text-neutral-800 flex flex-col h-36 justify-center ">
+      <div className="w-full px-10 py-1 text-white bg-neutral-800 justify-between hidden md:flex">
         <div className="flex gap-2 items-center hover:[&>a]:text-red-500 [&>a]:transition [&>a]:duration-500 ">
           <a href="https://instagram.com" target="_blank">
             <AiFillInstagram size={20} />
@@ -72,9 +74,23 @@ const Navbar = () => {
               {cart.length}
             </span>
           </Link>
-          <Link to="/register" className="flex">
-            <UserIcon className={`${linkHover} cursor-pointer`} />
-          </Link>
+          {userData ? (
+            <Link
+              to="/profile"
+              className={`flex gap-1 ${linkHover} cursor-pointer`}
+            >
+              <div className="flex">
+                <UserIcon />
+              </div>
+              <div className="flex items-end">{userData?.firstName}</div>
+            </Link>
+          ) : (
+            <Link to="/login" className="flex">
+              <ArrowRightOnRectangleIcon
+                className={`${linkHover} cursor-pointer`}
+              />
+            </Link>
+          )}
         </div>
         <div className="border border-white h-12 w-12 md:hidden">
           <Bars4Icon />
