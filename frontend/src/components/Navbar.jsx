@@ -20,7 +20,6 @@ import Logo from "../assets/food-logo-transparent.png";
 const Navbar = () => {
   const cart = useSelector((state) => state.cart);
   const { userData } = useSelector((state) => state.auth);
-  console.log(userData);
   const linkHover = "hover:text-red-600 transition-all duration-600";
   return (
     <nav className=" text-neutral-800 flex flex-col h-36 justify-center ">

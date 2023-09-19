@@ -14,6 +14,7 @@ import { store } from "./redux/store.js";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import Profile from "./pages/Profile.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
       { path: "/profile", element: <Profile /> },
+      { path: "checkout/:orderId", element: <Checkout /> },
     ],
   },
 ]);

@@ -11,13 +11,16 @@ import {
   removeCartItem,
 } from "../redux/cartSlice";
 import { motion } from "framer-motion";
+import { useCreateOrderMutation } from "../redux/ordersApiSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const cart = useSelector((state) => state.cart);
-
-  console.log(cart);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
   const handleRemove = (id) => {
     console.log(id);
     dispatch(removeCartItem(id));
@@ -31,6 +34,16 @@ const Cart = () => {
       return (acc += +item.total);
     }, 0);
     setTotalPrice(totalPrice.toFixed(2));
+  };
+  const handleCheckout = async () => {
+    try {
+      const orderId = await createOrder({ cart, total: totalPrice }).unwrap();
+      navigate(`/checkout/${orderId}`);
+    } catch (error) {
+      toast.error(error);
+    }
+
+    console.log(res);
   };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  p-10 ">
@@ -99,7 +112,21 @@ const Cart = () => {
       </div>
       <div className="lg:w-1/3 flex flex-col gap-10 items-center">
         <div className="text-3xl">Total: ${totalPrice}</div>
-        <button className="bg-black text-white px-4 py-2">CHECKOUT</button>
+        <div className="flex flex-col gap-3 items-center">
+          <label htmlFor="notes">Additional Notes (optional)</label>
+          <input type="text" className="outline-dotted" name="notes" />
+          <label htmlFor="payment_method">Payment Method</label>
+          <select name="payment_method" id="">
+            <option value="">Cash</option>
+            <option value="">Card</option>
+          </select>
+        </div>
+        <button
+          className="bg-black text-white px-4 py-2"
+          onClick={handleCheckout}
+        >
+          CHECKOUT
+        </button>
       </div>
     </div>
   );
