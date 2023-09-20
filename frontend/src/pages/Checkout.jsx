@@ -44,7 +44,8 @@ const Checkout = () => {
           </div>
         ))}
       </div>
-      <div>Total: {data.total}</div>
+      <div>Total: {data?.total}</div>
+      
     </div>
   );
 };

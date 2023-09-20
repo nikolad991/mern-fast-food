@@ -20,6 +20,12 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    admin: {
+      type: Boolean,
+      default: false,
+    },
+    address: String,
+    phoneNumber: String,
   },
   { timestamps: true }
 );

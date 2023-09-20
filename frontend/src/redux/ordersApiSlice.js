@@ -17,7 +17,14 @@ export const ordersApi = createApi({
     getOrder: builder.query({
       query: (orderId) => `${orderId}`,
     }),
+    getOrdersByUser: builder.query({
+      query: () => "myorders",
+    }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetOrderQuery } = ordersApi;
+export const {
+  useCreateOrderMutation,
+  useGetOrderQuery,
+  useGetOrdersByUserQuery,
+} = ordersApi;
