@@ -17,6 +17,8 @@ import { toast } from "react-toastify";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState("Cash");
+  const [additionalNotes, setAdditionalNotes] = useState("");
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,7 +39,12 @@ const Cart = () => {
   };
   const handleCheckout = async () => {
     try {
-      const orderId = await createOrder({ cart, total: totalPrice }).unwrap();
+      const orderId = await createOrder({
+        cart,
+        total: totalPrice,
+        paymentMethod,
+        additionalNotes,
+      }).unwrap();
       navigate(`/checkout/${orderId}`);
     } catch (error) {
       toast.error(error);
@@ -112,14 +119,32 @@ const Cart = () => {
       </div>
       <div className="lg:w-1/3 flex flex-col gap-10 items-center">
         <div className="text-3xl">Total: ${totalPrice}</div>
-        <div className="flex flex-col gap-3 items-center">
-          <label htmlFor="notes">Additional Notes (optional)</label>
-          <input type="text" className="outline-dotted" name="notes" />
-          <label htmlFor="payment_method">Payment Method</label>
-          <select name="payment_method" id="">
-            <option value="">Cash</option>
-            <option value="">Card</option>
-          </select>
+        <div className="flex flex-col gap-3 items-center w-full">
+          <textarea
+            onChange={(e) => {
+              setAdditionalNotes(e.target.value);
+            }}
+            id="message"
+            rows="4"
+            class="p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-red-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Additional instructions(optional)..."
+          ></textarea>
+
+          <div className="flex gap-4 pt-4 text-lg items-center">
+            <label htmlFor="payment_method">Payment Method</label>
+            <select
+              name="payment_method"
+              className="p-2"
+              onChange={(e) => {
+                setPaymentMethod(e.target.value);
+              }}
+            >
+              <option selected value="Cash">
+                Cash
+              </option>
+              <option value="Card">Card</option>
+            </select>
+          </div>
         </div>
         <button
           className="bg-black text-white px-4 py-2"

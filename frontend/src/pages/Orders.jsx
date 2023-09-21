@@ -12,13 +12,13 @@ const Orders = () => {
   }, []);
   return (
     <section className="w-5/6 mx-auto min-h-screen">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 md:py-28  ">
         {data?.map((order) => (
           <Link
             to={`/checkout/${order._id}`}
-            className="flex justify-between items-center border py-2 px-4 hover:bg-red-200"
+            className="flex flex-col md:flex-row justify-between items-center border py-2 px-4 bg-red-50 hover:bg-red-200"
           >
-            <span className="w-36">{order._id}</span>
+            <span className="w-fit md:w-36">{order._id}</span>
 
             <span
               className={`p-2 w-24 text-center rounded-md

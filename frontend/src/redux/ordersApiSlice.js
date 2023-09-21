@@ -9,7 +9,7 @@ export const ordersApi = createApi({
   endpoints: (builder) => ({
     createOrder: builder.mutation({
       query: (orderData) => ({
-        url: "/create",
+        url: "create",
         method: "POST",
         body: orderData,
       }),
@@ -19,6 +19,8 @@ export const ordersApi = createApi({
     }),
     getOrdersByUser: builder.query({
       query: () => "myorders",
+      transformResponse: (res) =>
+        res.sort((a, b) => (b.date > a.date ? 1 : -1)),
     }),
   }),
 });

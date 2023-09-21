@@ -13,6 +13,8 @@ const createOrder = async (req, res) => {
       user: user,
       items: req.body.cart,
       total: req.body.total,
+      additionalNotes: req.body.additionalNotes,
+      paymentMethod: req.body.paymentMethod,
     });
 
     res.status(200).json(order._id);
@@ -31,7 +33,6 @@ const getOrder = async (req, res) => {
 };
 const getOrdersByUser = async (req, res) => {
   const token = req.cookies.food_jwt;
-  console.log(token);
   if (!token) res.status(403).json({ error: "Not authorized" });
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   const user = await User.findOne({ _id: decoded.userId });

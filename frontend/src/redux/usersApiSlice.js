@@ -4,23 +4,25 @@ export const usersApi = createApi({
   reducerPath: "usersapi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:4000/api/users/",
-    credentials:"include"
-    
+    credentials: "include",
   }),
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (userData) => ({
-        url: "/register",
+        url: "register",
         method: "POST",
         body: userData,
       }),
     }),
     login: builder.mutation({
       query: (loginData) => ({
-        url: "/login",
+        url: "login",
         method: "POST",
         body: loginData,
       }),
+    }),
+    authorizedUser: builder.query({
+      query: () => "user",
     }),
   }),
 });

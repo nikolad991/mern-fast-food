@@ -37,4 +37,5 @@ const loginUser = async (req, res) => {
   } else
     res.status(401).json({ error: `User with email ${email} does not exist.` });
 };
-module.exports = { registerUser, loginUser };
+const getAuthorizedUser = (req, res) => {};
+module.exports = { registerUser, loginUser, getAuthorizedUser};
