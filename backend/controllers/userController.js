@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const generateToken = require("../utils/generateToken");
-
+const jwt = require("jsonwebtoken");
+const getUserFromToken = require("../utils/getUserFromToken");
 const registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -37,5 +38,24 @@ const loginUser = async (req, res) => {
   } else
     res.status(401).json({ error: `User with email ${email} does not exist.` });
 };
-const getAuthorizedUser = (req, res) => {};
-module.exports = { registerUser, loginUser, getAuthorizedUser};
+const getAuthorizedUser = async (req, res) => {
+  const user = await getUserFromToken(req, res);
+  res.status(200).json({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    address: user.address,
+    phoneNumber: user.phoneNumber,
+  });
+};
+const updateUser = async (req, res) => {
+  const user = await getUserFromToken(req, res);
+  const { firstName, lastName, address, phoneNumber } = req.body;
+  user.firstName = firstName;
+  user.lastName = lastName;
+  user.address = address;
+  user.phoneNumber = phoneNumber;
+  await user.save();
+
+  res.send(user);
+};
+module.exports = { registerUser, loginUser, getAuthorizedUser, updateUser };

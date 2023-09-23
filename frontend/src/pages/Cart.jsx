@@ -50,7 +50,7 @@ const Cart = () => {
       toast.error(error);
     }
 
-    console.log(res);
+  
   };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  p-10 ">
