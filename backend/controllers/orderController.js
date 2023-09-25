@@ -1,6 +1,7 @@
 const Order = require("../models/orderModel");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const getUserFromToken = require("../utils/getUserFromToken");
 
 const createOrder = async (req, res) => {
   const token = req.cookies.food_jwt;
@@ -43,4 +44,20 @@ const getOrdersByUser = async (req, res) => {
     res.status(400).json({ error: "Error" });
   }
 };
-module.exports = { createOrder, getOrder, getOrdersByUser };
+const confirmOrder = async (req, res) => {
+  const { orderId } = req.body;
+  try {
+    const order = await Order.findOne({ _id: orderId });
+    const user = await getUserFromToken(req, res);
+    if (!user._id.equals(order.user)) {
+      res.status(403).json({ error: "Not allowed" });
+    } else {
+      order.orderStatus = "Confirmed";
+      await order.save();
+      res.status(200).json({ msg: "Order confirmed" });
+    }
+  } catch (error) {
+    res.status(404).send({ error: "Order not Found" });
+  }
+};
+module.exports = { createOrder, getOrder, getOrdersByUser, confirmOrder };

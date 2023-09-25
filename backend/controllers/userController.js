@@ -55,7 +55,6 @@ const updateUser = async (req, res) => {
   user.address = address;
   user.phoneNumber = phoneNumber;
   await user.save();
-
   res.send(user);
 };
 module.exports = { registerUser, loginUser, getAuthorizedUser, updateUser };

@@ -11,22 +11,23 @@ const CheckoutForm = ({ userData, setDetailsConfirmed }) => {
       address: userData?.address || "",
       phoneNumber: userData?.phoneNumber || "",
     },
+
     onSubmit: async (values) => {
-      console.log("Formik OK");
       const user = await update(values).unwrap();
-      console.log(user);
+      setDetailsConfirmed(true);
     },
     enableReinitialize: true,
   });
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <label
             htmlFor="first_name"
-            className="block mb-2 text-sm font-medium text-gray-900 "
+            className="relative block mb-2 text-sm font-medium text-gray-900 "
           >
-            First name
+            First Name
           </label>
           <input
             type="text"
@@ -96,8 +97,7 @@ const CheckoutForm = ({ userData, setDetailsConfirmed }) => {
         <button
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-fit px-5 py-2.5 text-center"
-        onClick={()=>{setDetailsConfirmed(true)}}>
-            
+        >
           Confirm delivery details
         </button>
       </div>

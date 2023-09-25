@@ -1,18 +1,34 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useGetOrderQuery } from "../redux/ordersApiSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useConfirmOrderMutation, useGetOrderQuery } from "../redux/ordersApiSlice";
 import { useAuthorizedUserQuery } from "../redux/usersApiSlice";
 import CheckoutForm from "../components/CheckoutForm";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const params = useParams();
-  const [detailsConfirmed, setDetailsConfirmed] = useState(false)
+  const navigate = useNavigate();
+  const [detailsConfirmed, setDetailsConfirmed] = useState(false);
+  
   const { data, error, isLoading } = useGetOrderQuery(params.orderId);
+  const [confirmOrder, {isLoading:confirmOrderIsLoading}] = useConfirmOrderMutation();
   const {
     data: userData,
     error: userError,
     isLoading: userIsLoading,
   } = useAuthorizedUserQuery();
+  const handleOrderConfirmation = async()=>{
+    try {
+      const res = await confirmOrder({orderId:data._id}).unwrap();
+      navigate("/");
+      toast.success(res.msg);
+      
+    } catch (error) {
+      toast.warn(error.data.error);
+    }
+      
+      
+  }
   return (
     <div className="w-5/6 mx-auto min-h-screen  ">
       <div className="flex flex-col lg:flex-row gap-10 items-center">
@@ -55,14 +71,15 @@ const Checkout = () => {
             </div>
           ))}
         </div>
-        <div className="w-1/2 py-10">
+        {data?.orderStatus==="Pending"?(<div className="w-1/2 py-10">
           <div>Delivery Details</div>
-          <div>Total: {data?.total}</div>
+          <div className="text-2xl py-4 font-semibold">Total: ${data?.total}</div>
           <div>
             <CheckoutForm userData={...userData} setDetailsConfirmed={setDetailsConfirmed} />
           </div>
-          {detailsConfirmed && <button className="p-2 bg-yellow-600">FINISH ORDER</button>}
-        </div>
+          <div className="flex items-center justify-center py-10">{detailsConfirmed && <button className=" text-white text-xl rounded-md px-4 py-2 bg-yellow-600" onClick={handleOrderConfirmation}>FINISH ORDER</button>}</div>
+        </div>):(<>Confirmed</>)}
+        
       </div>
     </div>
   );

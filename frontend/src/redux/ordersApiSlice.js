@@ -22,6 +22,13 @@ export const ordersApi = createApi({
       transformResponse: (res) =>
         res.sort((a, b) => (b.date > a.date ? 1 : -1)),
     }),
+    confirmOrder: builder.mutation({
+      query: (orderId) => ({
+        url: "confirm",
+        method: "PUT",
+        body: orderId,
+      }),
+    }),
   }),
 });
 
@@ -29,4 +36,5 @@ export const {
   useCreateOrderMutation,
   useGetOrderQuery,
   useGetOrdersByUserQuery,
+  useConfirmOrderMutation,
 } = ordersApi;
