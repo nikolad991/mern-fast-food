@@ -2,7 +2,11 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/food-logo-transparent.png";
-import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare } from "react-icons/ai";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterSquare,
+} from "react-icons/ai";
 const MobileMenu = ({ setShowMobileMenu, cart }) => {
   const handleClose = () => {
     setShowMobileMenu(false);
@@ -34,16 +38,16 @@ const MobileMenu = ({ setShowMobileMenu, cart }) => {
           Contact
         </NavLink>
         <div className="flex gap-4 items-center ">
-            <a href="https://instagram.com" target="_blank">
-              <AiFillInstagram size={40} />
-            </a>
-            <a href="https://facebook.com" target="_blank">
-              <AiFillFacebook size={40} />
-            </a>
-            <a href="https://twitter.com" target="_blank">
-              <AiFillTwitterSquare size={40} />
-            </a>
-          </div>
+          <a href="https://instagram.com" target="_blank">
+            <AiFillInstagram size={40} />
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <AiFillFacebook size={40} />
+          </a>
+          <a href="https://twitter.com" target="_blank">
+            <AiFillTwitterSquare size={40} />
+          </a>
+        </div>
       </div>
     </nav>
   );
