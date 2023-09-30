@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { useLoginMutation, useRegisterMutation } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/authSlice";
 const Login = () => {
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (userData) navigate("/profile");
+  }, []);
   const formik = useFormik({
     initialValues: { email: "", password: "" },
 

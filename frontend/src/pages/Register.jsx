@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { useRegisterMutation } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 const Register = () => {
   const navigate = useNavigate();
   const [register, { isLoading }] = useRegisterMutation();
+  const { userData } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (userData) navigate("/profile");
+  }, []);
   const formik = useFormik({
     initialValues: { firstName: "", lastName: "", password: "", email: "" },
 
@@ -30,7 +35,7 @@ const Register = () => {
           );
           navigate("/login");
         }
-        
+
         console.log(result);
       } catch (error) {
         toast.error(error.data.error);

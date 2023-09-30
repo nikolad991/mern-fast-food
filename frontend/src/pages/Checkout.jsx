@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useConfirmOrderMutation, useGetOrderQuery } from "../redux/ordersApiSlice";
 import { useAuthorizedUserQuery } from "../redux/usersApiSlice";
@@ -17,6 +17,9 @@ const Checkout = () => {
     error: userError,
     isLoading: userIsLoading,
   } = useAuthorizedUserQuery();
+  useEffect(() => {
+    if (!userData) navigate("/login");
+  }, []);
   const handleOrderConfirmation = async()=>{
     try {
       const res = await confirmOrder({orderId:data._id}).unwrap();
