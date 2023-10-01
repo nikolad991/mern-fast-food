@@ -1,8 +1,7 @@
 import React from "react";
 import { BiSolidStar } from "react-icons/bi";
+import ContactForm from "../components/ContactForm";
 const Contact = () => {
-  const inputStyle =
-    "h-10 border-b-2 px-2 text-white border-red-400 bg-red-100 bg-opacity-25 outline-0 placeholder:px-2 placeholder:text-neutral-200";
   return (
     <section>
       <div className="w-5/6 mx-auto">
@@ -16,12 +15,12 @@ const Contact = () => {
               className="h-full w-full object-cover "
               src="https://img.freepik.com/premium-photo/concept-fast-food-isolated-white-background_185193-48704.jpg?w=1380"
               alt=""
-              srcset=""
+             
             />
           </div>
         </div>
 
-        <div className="flex justify-between  h-[500px] py-6 items-center">
+        <div className="flex flex-col lg:flex-row justify-between  lg:h-[500px] py-6 items-center">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col">
               <span className="flex gap-1 text-red-600 ">
@@ -54,35 +53,10 @@ const Contact = () => {
               </span>
             </div>
           </div>
-
-          <div
-            className=" p-4 rounded-md w-[600px] "
-            style={{
-              background: `linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-          url("https://img.freepik.com/premium-photo/flat-lay-arrangement-with-burgers-pizza_23-2148308817.jpg?w=1380")
-            center`,
-            }}
-          >
-            <h3 className="text-white font-semibold text-lg py-1">
-              Feel free to leave us a message
-            </h3>
-            <form className="flex flex-col gap-3">
-              <input className={inputStyle} type="text" placeholder="Name" />
-              <input className={inputStyle} type="text" placeholder="Email" />
-              <input className={inputStyle} type="text" placeholder="Phone" />
-              <textarea className="h-36 border-b-2 border-red-400 bg-red-100 bg-opacity-25 outline-0 text-white px-2 placeholder:px-2 placeholder:text-neutral-200" placeholder="Your Message" />
-              <button
-                type="submit"
-                className="bg-red-400 text-white font-semibold px-3 py-2 w-fit self-center"
-              >
-                SEND MESSAGE
-              </button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
-      {/* const inputStyle =
-    "h-10 border-b-2 px-2 text-white border-red-400 bg-red-100 bg-opacity-25 outline-0 placeholder:px-2 placeholder:text-neutral-200"; */}
+
       <div className="h-[400px]">
         <iframe
           className="w-full h-full"
