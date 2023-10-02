@@ -16,7 +16,7 @@ app.use(
   cors({
     credentials: true,
     origin:
-      process.env.NODE_ENV === "development" ? "http://192.168.1.2:5173" : "",
+      process.env.NODE_ENV === "development" ? "http://192.168.1.2:5173" : "https://mern-fast-food-acvrbsw4l-nikolad991.vercel.app/",
   })
 );
 app.use(express.json());
