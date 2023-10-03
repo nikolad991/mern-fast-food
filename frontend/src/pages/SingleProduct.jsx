@@ -14,7 +14,7 @@ const SingleProduct = () => {
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch(`http://localhost:4000/api/products/${params.id}`).then((res) =>
+    fetch(`${import.meta.env.VITE_BE_URL}/products/${params.id}`).then((res) =>
       res.json().then((data) => {
         setProduct(data);
       })

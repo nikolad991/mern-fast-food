@@ -6,7 +6,7 @@ const Menu = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   useEffect(() => {
-    fetch("http://localhost:4000/api/products/all").then((res) => {
+    fetch(`${import.meta.env.VITE_BE_URL}/products/all`).then((res) => {
       res.json().then((data) => {
         setProducts(data);
         setFilteredProducts(data);
@@ -46,7 +46,7 @@ const Menu = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
-              delay: index * 0.2,
+              delay: index * 0.05,
               duration: 0.5,
             }}
             className="flex w-full lg:w-[45%] h-48 border border-neutral-300 transition duration-600 hover:border-red-100 hover:bg-red-50 "

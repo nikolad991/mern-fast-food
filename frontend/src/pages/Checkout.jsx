@@ -21,7 +21,7 @@ const Checkout = () => {
     isLoading: userIsLoading,
   } = useAuthorizedUserQuery();
   useEffect(() => {
-    if (!userData) navigate("/login");
+    if (!userData && !isLoading) navigate("/login");
   }, []);
   const handleOrderConfirmation = async () => {
     try {
