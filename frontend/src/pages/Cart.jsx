@@ -12,7 +12,7 @@ import {
 } from "../redux/cartSlice";
 import { motion } from "framer-motion";
 import { useCreateOrderMutation } from "../redux/ordersApiSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Cart = () => {
@@ -20,6 +20,7 @@ const Cart = () => {
   const [paymentMethod, setPaymentMethod] = useState("Cash");
   const [additionalNotes, setAdditionalNotes] = useState("");
   const cart = useSelector((state) => state.cart);
+  const { userData } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -49,8 +50,6 @@ const Cart = () => {
     } catch (error) {
       toast.error(error);
     }
-
-  
   };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  p-10 ">
@@ -146,12 +145,25 @@ const Cart = () => {
             </select>
           </div>
         </div>
-        <button
-          className="bg-black text-white px-4 py-2"
-          onClick={handleCheckout}
-        >
-          CHECKOUT
-        </button>
+
+        {userData ? (
+          <button
+            className="bg-black text-white px-4 py-2"
+            onClick={handleCheckout}
+          >
+            CHECKOUT
+          </button>
+        ) : (
+          <div className="flex flex-col gap-2">
+            <p>You must be logged in to continue</p>
+            <Link
+              to="/login"
+              className="bg-red-400 px-4 py-2 text-white w-fit self-center"
+            >
+              LOGIN
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

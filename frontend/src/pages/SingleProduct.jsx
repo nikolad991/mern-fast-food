@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../redux/cartSlice";
+import { toast } from "react-toastify";
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
@@ -111,6 +112,7 @@ const SingleProduct = () => {
                     JSON.stringify({ quantity, product, total })
                   );
                   dispatch(addCartItem(payload));
+                  toast.success(`${product.name} added to cart`);
                 }}
               >
                 <span>Add to cart</span>

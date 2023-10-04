@@ -11,7 +11,7 @@ const generateToken = (res, userId) => {
     }
   );
   res.cookie("food_jwt", token, {
-    httpOnly: false,
+    httpOnly: process.env.NODE_ENV === "development" ? false : true,
     secure: true,
     sameSite: "none",
     maxAge: 30 * 24 * 60 * 60 * 1000,
