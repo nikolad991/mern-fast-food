@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useUpdateMutation } from "../redux/usersApiSlice";
+import { toast } from "react-toastify";
 
-const CheckoutForm = ({ userData, setDetailsConfirmed }) => {
+const UpdateForm = ({ userData, setDetailsConfirmed }) => {
   const [update, { isLoading }] = useUpdateMutation();
   const formik = useFormik({
     initialValues: {
@@ -95,6 +96,9 @@ const CheckoutForm = ({ userData, setDetailsConfirmed }) => {
           />
         </div>
         <button
+          onClick={() => {
+            toast.success("User details updated");
+          }}
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-fit px-5 py-2.5 text-center"
         >
@@ -105,4 +109,4 @@ const CheckoutForm = ({ userData, setDetailsConfirmed }) => {
   );
 };
 
-export default CheckoutForm;
+export default UpdateForm;

@@ -31,6 +31,7 @@ const loginUser = async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        createdAt: user.createdAt,
       });
     } else {
       res.status(401).json({ error: "Incorrect Password" });

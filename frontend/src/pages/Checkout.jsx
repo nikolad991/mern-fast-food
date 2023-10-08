@@ -5,8 +5,8 @@ import {
   useGetOrderQuery,
 } from "../redux/ordersApiSlice";
 import { useAuthorizedUserQuery } from "../redux/usersApiSlice";
-import CheckoutForm from "../components/CheckoutForm";
 import { toast } from "react-toastify";
+import UpdateForm from "../components/UpdateForm";
 
 const Checkout = () => {
   const params = useParams();
@@ -81,7 +81,7 @@ const Checkout = () => {
               Total: ${data?.total}
             </div>
             <div>
-              <CheckoutForm
+              <UpdateForm
                 userData={userData}
                 setDetailsConfirmed={setDetailsConfirmed}
               />
