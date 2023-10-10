@@ -48,6 +48,18 @@ const getAuthorizedUser = async (req, res) => {
     phoneNumber: user.phoneNumber,
   });
 };
+const changePassword = async (req, res) => {
+  const user = await getUserFromToken(req, res);
+  const { oldPassword, newPassword } = req.body;
+  const passwordCheck = await user.matchPassword(oldPassword);
+  if (passwordCheck) {
+    user.password = newPassword;
+    await user.save();
+    res.status(200).json({ msg: "Password Changed" });
+  } else {
+    res.status(401).json({ error: "Wrong Password" });
+  }
+};
 const updateUser = async (req, res) => {
   const user = await getUserFromToken(req, res);
   const { firstName, lastName, address, phoneNumber } = req.body;
@@ -58,4 +70,10 @@ const updateUser = async (req, res) => {
   await user.save();
   res.send(user);
 };
-module.exports = { registerUser, loginUser, getAuthorizedUser, updateUser };
+module.exports = {
+  registerUser,
+  loginUser,
+  getAuthorizedUser,
+  updateUser,
+  changePassword,
+};

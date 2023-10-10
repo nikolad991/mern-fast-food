@@ -44,6 +44,7 @@ const Profile = () => {
         </div>
 
         <div className="w-3/4 p-4 flex flex-col">
+          <h2 className="text-lg py-3">Change user details</h2>
           <UpdateForm userData={data} />
           <ChangePasswordForm />
         </div>
