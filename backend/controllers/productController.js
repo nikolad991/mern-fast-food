@@ -35,10 +35,21 @@ const addProduct = async (req, res) => {
   console.log("Product added");
 };
 
+const searchProductsByName = async (req, res) => {
+  const { searchTerm } = req.params;
+  const products = await Product.find({
+    name: {
+      $regex: searchTerm,
+      $options: "i",
+    },
+  });
+  res.send(products);
+};
 module.exports = {
   getAllProducts,
   getSingleProduct,
   getFeaturedProducts,
   getProductsByCategory,
   addProduct,
+  searchProductsByName,
 };

@@ -18,8 +18,10 @@ import {
 
 import Logo from "../assets/food-logo-transparent.png";
 import MobileMenu from "./MobileMenu";
+import SearchSidebar from "./SearchSidebar";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showSearchSidebar, setShowSearchSidebar] = useState(false);
   const cart = useSelector((state) => state.cart);
   const { userData } = useSelector((state) => state.auth);
   const linkHover = "hover:text-red-600 transition-all duration-600";
@@ -69,10 +71,10 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="flex h-7 gap-5">
-            <MagnifyingGlassIcon className={`${linkHover} cursor-pointer`} />
+            <MagnifyingGlassIcon className={`${linkHover} cursor-pointer`} onClick={()=>{setShowSearchSidebar(!showSearchSidebar)}} />
             <Link to="/cart" className="flex relative">
               <ShoppingCartIcon className={`${linkHover} cursor-pointer`} />
-              <span className="absolute top-0 right-0 text-xs font-bold w-4 h-4 p-2 bg-red-300 rounded-full flex items-center justify-center">
+              <span className="absolute top-0 right-0 text-xs font-bold w-4 h-4 p-2 bg-red-300 rounded-full flex items-center justify-center select-none">
                 {cart.length}
               </span>
             </Link>
@@ -99,7 +101,10 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {showMobileMenu && <MobileMenu setShowMobileMenu={setShowMobileMenu} cart={cart} />}
+      {showMobileMenu && (
+        <MobileMenu setShowMobileMenu={setShowMobileMenu} cart={cart} />
+      )}
+      {showSearchSidebar && <SearchSidebar />}
     </>
   );
 };
