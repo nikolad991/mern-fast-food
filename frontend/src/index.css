@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,300&family=Yeseva+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,10 +8,10 @@
   html {
     font-family: "Josefin Sans", sans-serif;
   }
-  
-  
 }
-a.active{
-  @apply text-red-900 border-b border-red-900
-  
+a.active {
+  @apply text-red-900 border-b border-red-900;
+}
+.curve {
+  border-radius: 79% 21% 70% 30% / 39% 54% 46% 61%;
 }

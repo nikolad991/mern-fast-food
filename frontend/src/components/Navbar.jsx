@@ -27,7 +27,7 @@ const Navbar = () => {
   const linkHover = "hover:text-red-600 transition-all duration-600";
   return (
     <>
-      <nav className=" text-neutral-800 flex flex-col h-36 justify-center ">
+      <nav className=" text-neutral-800 flex flex-col h-36 justify-center">
         <div className="w-full px-10 py-1 text-white bg-neutral-800 justify-between hidden md:flex">
           <div className="flex gap-2 items-center hover:[&>a]:text-red-500 [&>a]:transition [&>a]:duration-500 ">
             <a href="https://instagram.com" target="_blank">

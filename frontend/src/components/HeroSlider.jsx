@@ -18,14 +18,15 @@ const HeroSlider = () => {
 
   if (sliderData)
     return (
-      <section className="h-[calc(100vh-8rem)]">
+      <section className="h-[calc(100vh-8rem)] overflow-hidden px-4 bg-red-50 ">
         <motion.div
-          className="relative h-full w-full"
+          className="relative h-full w-full flex items-center justify-center"
           key={currentSlide}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ x: "100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: "-100vw" }}
           transition={{
-            duration: 0.8,
+            duration: 0.6,
           }}
         >
           <div
@@ -48,23 +49,30 @@ const HeroSlider = () => {
           >
             {">"}
           </div>
-          <img
-            src={sliderData[currentSlide]?.imgUrl}
-            className="h-full w-full object-cover"
-          />
-          <motion.div className="absolute top-0 py-36 md:py-0 md:top-1/3 left-1/2 -translate-x-1/2 bg-neutral-800 bg-opacity-50 rounded-lg w-full h-full md:w-1/2 md:h-1/2">
-            <img src={Logo} alt="" className="mx-auto grayscale" />
 
-            <div className="flex flex-col gap-4 text-center font-yeseva text-2xl md:text-4xl text-white items-center uppercase">
-              <h1 className="text-red-400">{sliderData[currentSlide]?.text}</h1>
-              <h2 className="text-sky-600">
+          <motion.div className="w-1/2 h-1/2 flex items-center justify-center">
+            {/* <img src={Logo} alt="" className="mx-auto grayscale" /> */}
+
+            <div className="flex flex-col gap-4  font-lobster">
+              {/* <h1 className="text-red-400">{sliderData[currentSlide]?.text}</h1>
+               */}
+              <h1 className="text-red-600 text-6xl w-72 leading-tight">
+                {sliderData[currentSlide]?.text}
+              </h1>
+              <h2 className="text-sky-600 text-2xl">
                 {sliderData[currentSlide]?.subtext}
               </h2>
-              <button className="bg-neutral-800 py-4 px-6 w-fit rounded-md hover:bg-transparent hover:border">
-                ORDER NOW
+              <button className="bg-red-600 text-white py-4 px-6 w-fit rounded-md border-2 border-transparent hover:bg-transparent hover:text-red-600 hover:border-2 hover:border-red-600">
+                Order Now
               </button>
             </div>
           </motion.div>
+          <div className="w-1/2 h-5/6 flex items-center justify-center bg-red-600 curve overflow-hidden">
+            <img
+              src={sliderData[currentSlide]?.imgUrl}
+              className="h-full  w-full object-cover"
+            />
+          </div>
         </motion.div>
       </section>
     );

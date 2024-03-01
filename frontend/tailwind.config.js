@@ -3,7 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {"yeseva":"'Yeseva One', cursive;"}
+      fontFamily: { yeseva: "'Yeseva One', cursive;" },
+      fontFamily: { lobster: "'Lobster', sans-serif;" },
     },
   },
   plugins: [],
