@@ -20,7 +20,6 @@ const textVariants = {
 };
 const picVariants = {
   initial: {
-    borderRadius: "61% 39% 48% 52% / 45% 66% 34% 55%",
     transform: "scale(1.1)",
   },
   animate: {
@@ -53,7 +52,7 @@ const HeroSlider = () => {
         style={{ backgroundImage: `url(${HeroBg})` }}
       >
         <motion.div
-          className="relative h-full w-full flex items-center justify-center"
+          className="relative h-full w-full flex flex-col-reverse lg:flex-row items-center justify-center"
           key={currentSlide}
           initial={{ x: "100vw", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -87,22 +86,22 @@ const HeroSlider = () => {
             variants={textVariants}
             initial="initial"
             animate="animate"
-            className="w-1/2 h-1/2 flex items-center justify-center"
+            className="w-1/2 h-1/2 flex items-center justify-center mb-10"
           >
-            <div className="flex flex-col gap-10  font-lobster">
+            <div className="flex flex-col gap-3 lg:gap-10  font-lobster text-center lg:text-left">
               <motion.h1
                 variants={textVariants}
-                className="text-red-600 text-6xl w-72 leading-tight"
+                className="text-red-600  text-5xl lg:text-6xl w-72 lg:leading-tight"
               >
                 {sliderData[currentSlide]?.text}
               </motion.h1>
               <motion.h2
                 variants={textVariants}
-                className="text-sky-600 text-2xl"
+                className="text-sky-600 text-lg lg:text-2xl"
               >
                 {sliderData[currentSlide]?.subtext}
               </motion.h2>
-              <motion.div variants={textVariants}>
+              <motion.div variants={textVariants} className="mt-5">
                 <Link
                   to="/menu"
                   className="bg-red-600 text-white py-4 px-6 w-fit rounded-md border-2 border-transparent hover:bg-transparent hover:text-red-600 hover:border-2 hover:border-red-600"
@@ -116,11 +115,11 @@ const HeroSlider = () => {
             variants={picVariants}
             initial="initial"
             animate="animate"
-            className="w-1/2 h-5/6 flex items-center justify-center  overflow-hidden relative"
+            className="w-full h-full lg:w-1/2 lg:h-5/6 flex items-center justify-center  overflow-hidden relative p-5"
           >
             <img
               src={sliderData[currentSlide]?.imgUrl}
-              className="h-[600px] w-[600px] object-cover"
+              className="sm:h-64 sm:w-64 md:h-96 md:w-96 xl:h-[600px] xl:w-[600px] object-cover"
             />
           </motion.div>
         </motion.div>
