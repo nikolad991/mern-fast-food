@@ -1,9 +1,13 @@
 import React from "react";
 import { BiSolidStar } from "react-icons/bi";
 import ContactForm from "../components/ContactForm";
+import { Helmet } from "react-helmet-async";
 const Contact = () => {
   return (
     <section>
+      <Helmet>
+        <title>Food Delivery | Contact </title>
+      </Helmet>
       <div className="w-5/6 mx-auto">
         <div className="flex items-center justify-between h-[500px]">
           <div className="font-yeseva ">
@@ -15,7 +19,6 @@ const Contact = () => {
               className="h-full w-full object-cover "
               src="https://img.freepik.com/premium-photo/concept-fast-food-isolated-white-background_185193-48704.jpg?w=1380"
               alt=""
-             
             />
           </div>
         </div>

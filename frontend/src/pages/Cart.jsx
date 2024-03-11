@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { useCreateOrderMutation } from "../redux/ordersApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -53,6 +54,9 @@ const Cart = () => {
   };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  p-10 ">
+      <Helmet>
+        <title>{`Food Delivery | Cart (${cart.length})`}</title>
+      </Helmet>
       <div className="flex lg:w-2/3 flex-col gap-5  ">
         {cart.map((item, index) => (
           <motion.div

@@ -8,6 +8,7 @@ import moment from "moment";
 import UpdateForm from "../components/UpdateForm";
 import { useAuthorizedUserQuery } from "../redux/usersApiSlice";
 import ChangePasswordForm from "../components/ChangePasswordForm";
+import { Helmet } from "react-helmet-async";
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const Profile = () => {
   if (userData)
     return (
       <section className="flex w-5/6 mx-auto min-h-screen  ">
+        <Helmet>
+          <title>Food Delivery | Profile </title>
+        </Helmet>
         <div className="w-1/4 flex flex-col items-center border-r-2">
           <div className="flex w-36 h-36 p-2 text-neutral-500">
             <FaRegUserCircle size="fit" />

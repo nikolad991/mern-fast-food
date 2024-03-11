@@ -3,6 +3,7 @@ import { useGetOrdersByUserQuery } from "../redux/ordersApiSlice";
 import moment from "moment";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet-async";
 const Orders = () => {
   const { data, error, isLoading } = useGetOrdersByUserQuery();
   const { userData } = useSelector((state) => state.auth);
@@ -12,6 +13,9 @@ const Orders = () => {
   }, []);
   return (
     <section className="w-5/6 mx-auto min-h-screen">
+        <Helmet >
+        <title>Food Delivery | Orders </title>
+      </Helmet>
       <div className="flex flex-col gap-2 md:py-28  ">
         {data?.map((order) => (
           <Link

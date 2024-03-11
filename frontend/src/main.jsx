@@ -15,6 +15,7 @@ import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import Profile from "./pages/Profile.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -41,10 +42,15 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+const helmetContext = {
+  baseTitle: "Food Delivery",
+};
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <HelmetProvider context={helmetContext}>
+        <RouterProvider router={router} />
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>
 );

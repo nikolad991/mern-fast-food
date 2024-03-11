@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 const Menu = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -24,6 +25,9 @@ const Menu = () => {
   };
   return (
     <section className=" bg-white">
+        <Helmet>
+        <title>Food Delivery | Menu </title>
+      </Helmet>
       <div className="flex justify-center py-10 gap-6 [&>button]:rounded-3xl [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 [&>button]:text-lg [&>button]:py-2 [&>button]:px-5">
         {["All", "Burger", "Pizza", "Pancake"].map((category, index) => (
           <button

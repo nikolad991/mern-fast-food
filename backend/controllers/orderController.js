@@ -5,7 +5,9 @@ const getUserFromToken = require("../utils/getUserFromToken");
 
 const createOrder = async (req, res) => {
   const token = req.cookies.food_jwt;
-  if (!token) res.status(403).json({ error: "Not authorized" });
+  if (!token){
+    return res.status(403).json({ error: "Not authorized" });
+  } 
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   const user = await User.findOne({ _id: decoded.userId });
 
@@ -34,7 +36,9 @@ const getOrder = async (req, res) => {
 };
 const getOrdersByUser = async (req, res) => {
   const token = req.cookies.food_jwt;
-  if (!token) res.status(403).json({ error: "Not authorized" });
+  if (!token) {
+    return res.status(403).json({ error: "Not authorized" });
+  }
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   const user = await User.findOne({ _id: decoded.userId });
   try {

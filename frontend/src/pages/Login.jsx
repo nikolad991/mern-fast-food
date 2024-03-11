@@ -6,6 +6,7 @@ import { useLoginMutation, useRegisterMutation } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/authSlice";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
@@ -51,6 +52,9 @@ const Login = () => {
   const inputStyle = "border-b-2 border-neutral-400 bg-red-100 outline-0	";
   return (
     <div className="flex min-h-screen items-center py-10 px-2 ">
+      <Helmet>
+        <title>Food Delivery | Login </title>
+      </Helmet>
       <div className="flex flex-col  md:flex-row-reverse md:w-5/6 mx-auto  items-center    bg-white rounded-lg overflow-hidden  md:h-[600px]">
         <div
           className="flex  md:w-1/2 h-full flex-col gap-7 justify-around p-12 text-white bg-blue-400 items-center"

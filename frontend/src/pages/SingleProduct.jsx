@@ -8,6 +8,8 @@ import {
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../redux/cartSlice";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
+
 const SingleProduct = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
@@ -39,6 +41,10 @@ const SingleProduct = () => {
   };
   return (
     <div className="flex flex-col lg:flex-row  items-center min-h-screen xl:w-5/6 mx-auto">
+      <Helmet>
+        <title> Food Delivery | {product.name}</title>
+        <meta name="description" content={product.description} />
+      </Helmet>
       <div className="md:w-1/2 p-2">
         <img src={product.imageUrl} alt="" />
       </div>

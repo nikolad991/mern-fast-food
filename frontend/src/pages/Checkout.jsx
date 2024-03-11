@@ -7,6 +7,7 @@ import {
 import { useAuthorizedUserQuery } from "../redux/usersApiSlice";
 import { toast } from "react-toastify";
 import UpdateForm from "../components/UpdateForm";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = () => {
   const params = useParams();
@@ -34,6 +35,9 @@ const Checkout = () => {
   };
   return (
     <div className="w-5/6 mx-auto min-h-screen  ">
+      <Helmet>
+        <title>Food Delivery | Checkout</title>
+      </Helmet>
       <div className="flex flex-col lg:flex-row gap-10 items-center">
         <div className="flex flex-col gap-2 lg:w-1/2 ">
           {data?.items.map((item, index) => (
