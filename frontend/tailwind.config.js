@@ -5,6 +5,9 @@ export default {
     extend: {
       fontFamily: { yeseva: "'Yeseva One', cursive;" },
       fontFamily: { lobster: "'Lobster', sans-serif;" },
+      backgroundImage: {
+        "hero-pattern": "url('./assets/heroBg.png')",
+      },
     },
   },
   plugins: [],

@@ -16,7 +16,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 
-import Logo from "../assets/food-logo-transparent.png";
+import Logo from "../assets/logo3.png";
 import MobileMenu from "./MobileMenu";
 import SearchSidebar from "./SearchSidebar";
 const Navbar = () => {
@@ -50,10 +50,10 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="px-6 flex items-center justify-between">
+        <div className="px-6 flex items-center justify-between bg-red-50">
           <div className="flex h-full cursor-pointer ">
             <Link to="/">
-              <img src={Logo} className="w-28 h-28" alt="logo" />
+              <img src={Logo} className="w-28 h-28 object-contain" alt="logo" />
             </Link>
           </div>
           <div className="hidden md:flex gap-12 text-2xl ">

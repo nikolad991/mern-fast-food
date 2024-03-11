@@ -3,6 +3,7 @@ import FeaturedBg from "../assets/featuredBg.jpg";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import { useGetFeaturedProductsQuery } from "../redux/productsApiSlice";
+import PizzaLoader from "./PIzzaLoader";
 
 const FeaturedProducts = () => {
   const {
@@ -15,6 +16,7 @@ const FeaturedProducts = () => {
       style={{ backgroundImage: `url(${FeaturedBg})` }}
       className="bg-center bg-cover bg-fixed"
     >
+      {isLoading && <PizzaLoader />}
       <div className="py-10 md:py-20 flex flex-col items-center text-center gap-4 text-red-500 ">
         <h1 className="text-7xl font-yeseva">Weekly Specials</h1>
         <div className="flex gap-2 h-30 w-48">
