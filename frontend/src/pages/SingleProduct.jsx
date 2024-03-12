@@ -42,7 +42,7 @@ const SingleProduct = () => {
   return (
     <div className="flex flex-col lg:flex-row  items-center min-h-screen xl:w-5/6 mx-auto">
       <Helmet>
-        <title> Food Delivery | {product.name}</title>
+        <title>{`Food Delivery | ${product.name}`}</title>
         <meta name="description" content={product.description} />
       </Helmet>
       <div className="md:w-1/2 p-2">
