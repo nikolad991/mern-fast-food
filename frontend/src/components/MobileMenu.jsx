@@ -12,7 +12,7 @@ const MobileMenu = ({ setShowMobileMenu, cart }) => {
     setShowMobileMenu(false);
   };
   return (
-    <nav className="absolute top-0 left-0 bg-red-400 min-h-screen w-full overscroll-none z-10">
+    <nav className="absolute top-0 left-0 bg-red-400 min-h-screen w-full overscroll-none z-20">
       <div className="absolute top-11 right-7 text-5xl animate-pulse ">
         <MdClose onClick={() => setShowMobileMenu(false)} />
       </div>

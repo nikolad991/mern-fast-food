@@ -6,6 +6,7 @@ import { ordersApi } from "./ordersApiSlice";
 import { sliderApi } from "./sliderSlice";
 import { contactFormApi } from "./contactFormSlice";
 import { productsApi } from "./productsApiSlice";
+import { subscribersApi } from "./subscribersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     [ordersApi.reducerPath]: ordersApi.reducer,
     [sliderApi.reducerPath]: sliderApi.reducer,
     [contactFormApi.reducerPath]: contactFormApi.reducer,
+    [subscribersApi.reducerPath]: subscribersApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -23,5 +25,6 @@ export const store = configureStore({
       .concat(productsApi.middleware)
       .concat(ordersApi.middleware)
       .concat(sliderApi.middleware)
-      .concat(contactFormApi.middleware),
+      .concat(contactFormApi.middleware)
+      .concat(subscribersApi.middleware),
 });

@@ -48,7 +48,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="h-[calc(100vh-8rem)] overflow-hidden px-4 bg-red-50 bg-blend-overlay flex items-center justify-center"
+      className="h-[100vh] overflow-hidden px-4 pt-20 bg-red-50 bg-blend-overlay flex items-center justify-center"
       style={{ backgroundImage: `url(${HeroBg})` }}
     >
       {sliderData ? (

@@ -6,7 +6,7 @@ import LoveFoodSvg from "../assets/lovefood.svg";
 import BestPriceSvg from "../assets/bestprice.svg";
 const WhyChooseUs = () => {
   return (
-    <div className="flex text-center items-center justify-evenly bg-neutral-700 text-white h-[500px] bg-blend-overlay bg-cover bg-center " style={{backgroundImage:`url(${WhyChooseUsBg})`}}>
+    <div className="flex text-center items-center justify-evenly bg-neutral-700 text-white h-[500px] bg-blend-overlay bg-cover bg-fixed bg-center " style={{backgroundImage:`url(${WhyChooseUsBg})`}}>
       <div className="w-5/6 mx-auto flex items-center justify-center gap-16 ">
         <div className="flex flex-col items-center justify-center gap-2">
           <h2 className="text-xl">Hungry Now?</h2>

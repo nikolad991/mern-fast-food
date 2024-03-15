@@ -8,7 +8,7 @@ const Contact = () => {
       <Helmet>
         <title>Food Delivery | Contact </title>
       </Helmet>
-      <div className="w-5/6 mx-auto">
+      <div className="w-5/6 mx-auto pt-32">
         <div className="flex items-center justify-between h-[500px]">
           <div className="font-yeseva ">
             <h3 className="text-xl">GET IN TOUCH</h3>

@@ -4,6 +4,7 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import { Helmet } from "react-helmet-async";
 import FeaturedCard from "../components/FeaturedCard";
 import WhyChooseUs from "../components/WhyChooseUs";
+import Subscribe from "../components/Subscribe";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <HeroSlider />
       <FeaturedProducts />
       <WhyChooseUs />
+      <Subscribe />
     </div>
   );
 };

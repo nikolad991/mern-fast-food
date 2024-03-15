@@ -12,7 +12,7 @@ const Orders = () => {
     if (!userData) navigate("/login");
   }, []);
   return (
-    <section className="w-5/6 mx-auto min-h-screen">
+    <section className="w-5/6 mx-auto min-h-screen pt-32">
         <Helmet >
         <title>Food Delivery | Orders </title>
       </Helmet>

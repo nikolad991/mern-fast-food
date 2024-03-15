@@ -25,7 +25,7 @@ const Profile = () => {
   };
   if (userData)
     return (
-      <section className="flex w-5/6 mx-auto min-h-screen  ">
+      <section className="flex w-5/6 mx-auto min-h-screen pt-32  ">
         <Helmet>
           <title>Food Delivery | Profile </title>
         </Helmet>

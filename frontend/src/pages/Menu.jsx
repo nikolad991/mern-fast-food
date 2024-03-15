@@ -24,7 +24,7 @@ const Menu = () => {
       );
   };
   return (
-    <section className=" bg-white">
+    <section className=" bg-white pt-32">
         <Helmet>
         <title>Food Delivery | Menu </title>
       </Helmet>

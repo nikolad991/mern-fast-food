@@ -27,8 +27,8 @@ const Navbar = () => {
   const linkHover = "hover:text-red-600 transition-all duration-600";
   return (
     <>
-      <nav className=" text-neutral-800 flex flex-col h-36 justify-center">
-        <div className="w-full px-10 py-1 text-white bg-neutral-800 justify-between hidden md:flex">
+      <nav className=" text-neutral-800 flex flex-col h-36 justify-center absolute w-full z-20">
+        {/* <div className="w-full px-10 py-1 text-white bg-neutral-800 justify-between hidden md:flex">
           <div className="flex gap-2 items-center hover:[&>a]:text-red-500 [&>a]:transition [&>a]:duration-500 ">
             <a href="https://instagram.com" target="_blank">
               <AiFillInstagram size={20} />
@@ -49,8 +49,8 @@ const Navbar = () => {
               <AiOutlineMail /> info@food.xyz
             </a>
           </div>
-        </div>
-        <div className="px-6 flex items-center justify-between bg-red-50">
+        </div> */}
+        <div className="px-6 flex items-center justify-between">
           <div className="flex h-full cursor-pointer ">
             <Link to="/">
               <img src={Logo} className="w-28 h-28 object-contain" alt="logo" />
