@@ -9,32 +9,36 @@ const Subscribe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await subscribeToNewsletter({ email }).unwrap();
       toast.success(res.msg);
     } catch (err) {
-      toast.warning(err);
+      console.log(err.data.error);
+      toast.warning(err.data.error);
     }
   };
   return (
-    <div
-      className="p-10 bg-neutral-500
-    "
-    >
+    <div className="flex flex-col gap-2">
+      <h2 className="text-xl font-semibold">Subscribe To Newsletter</h2>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center justify-center gap-3"
+        className="flex items-center justify-center gap-3 relative"
       >
-        <label htmlFor="email">Subscribe to newsletter</label>
         <input
+          className="px-2 py-4 rounded border-none focus:outline-none min-w-full placeholder:text-sm text-sm"
           type="email"
           id="email"
+          placeholder="Enter you email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
-        <button type="submit" className="bg-white text-black rounded px-4 py-2">
+        <button
+          type="submit"
+          className="bg-red-600 text-white border border-transparent rounded px-4 py-2 absolute right-2 hover:bg-white hover:text-red-600 hover:border-red-600 transitiond duration-500"
+        >
           Subscribe
         </button>
       </form>

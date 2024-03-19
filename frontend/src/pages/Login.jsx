@@ -51,7 +51,7 @@ const Login = () => {
   };
   const inputStyle = "border-b-2 border-neutral-400 bg-red-100 outline-0	";
   return (
-    <div className="flex min-h-screen items-center py-10 px-2 ">
+    <div className="flex min-h-screen items-center py-40 md:py-20 px-2 ">
       <Helmet>
         <title>Food Delivery | Login </title>
       </Helmet>

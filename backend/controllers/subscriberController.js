@@ -11,12 +11,12 @@ const addSubscriber = async (req, res) => {
     if (subscriber) {
       return res
         .status(409)
-        .json({ error: `User with ${email} is already subscribed` });
+        .json({ error: "User with email" + email + " is already subscribed" });
     } else {
       await Subscriber.create({ email });
       return res
         .status(201)
-        .json({ msg: `User with ${email} is successfully subscribed` });
+        .json({ msg: `User with email ${email} is successfully subscribed` });
     }
   } catch (error) {
     return res
