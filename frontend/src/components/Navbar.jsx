@@ -19,6 +19,7 @@ import {
 import Logo from "../assets/logo3.png";
 import MobileMenu from "./MobileMenu";
 import SearchSidebar from "./SearchSidebar";
+import { AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showSearchSidebar, setShowSearchSidebar] = useState(false);
@@ -71,7 +72,12 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="flex h-7 gap-5">
-            <MagnifyingGlassIcon className={`${linkHover} cursor-pointer`} onClick={()=>{setShowSearchSidebar(!showSearchSidebar)}} />
+            <MagnifyingGlassIcon
+              className={`${linkHover} cursor-pointer`}
+              onClick={() => {
+                setShowSearchSidebar(!showSearchSidebar);
+              }}
+            />
             <Link to="/cart" className="flex relative">
               <ShoppingCartIcon className={`${linkHover} cursor-pointer`} />
               <span className="absolute top-0 right-0 text-xs font-bold w-4 h-4 p-2 bg-red-300 rounded-full flex items-center justify-center select-none">
@@ -104,7 +110,11 @@ const Navbar = () => {
       {showMobileMenu && (
         <MobileMenu setShowMobileMenu={setShowMobileMenu} cart={cart} />
       )}
-      {showSearchSidebar && <SearchSidebar />}
+      <AnimatePresence>
+        {showSearchSidebar && (
+          <SearchSidebar setShowSearchSidebar={setShowSearchSidebar} />
+        )}
+      </AnimatePresence>
     </>
   );
 };
