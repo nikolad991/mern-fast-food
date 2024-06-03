@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import Logo from "../assets/logo3.png";
 import Subscribe from "./Subscribe";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-neutral-300 p-4 w-full flex flex-col items-center">
@@ -24,7 +24,7 @@ const Footer = () => {
               delivered.
             </p>
           </div>
-          <div className="p-1 min-w-[400px] md:w-[600px]">
+          <div className="p-1 md:min-w-[400px] md:w-[600px]">
             <Subscribe />
           </div>
         </div>

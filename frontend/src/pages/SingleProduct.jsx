@@ -22,7 +22,7 @@ const SingleProduct = () => {
         setProduct(data);
       })
     );
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     calculateTotal();
@@ -40,7 +40,7 @@ const SingleProduct = () => {
     setTotal((quantity * totalPrice)?.toFixed(2));
   };
   return (
-    <div className="flex flex-col lg:flex-row  items-center min-h-screen xl:w-5/6 mx-auto">
+    <div className="flex flex-col lg:flex-row  items-center min-h-screen xl:w-5/6 mx-auto pt-20">
       <Helmet>
         <title>{`Food Delivery | ${product.name}`}</title>
         <meta name="description" content={product.description} />

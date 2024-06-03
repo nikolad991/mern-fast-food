@@ -21,14 +21,6 @@ const SearchSidebar = ({ setShowSearchSidebar }) => {
         stiffness: "70",
       },
     },
-    exit: {
-      height: "50%",
-      opacity: 0.5,
-      transition: {
-        type: "spring",
-        stiffness: "70",
-      },
-    },
   };
   return (
     <motion.div
@@ -36,7 +28,7 @@ const SearchSidebar = ({ setShowSearchSidebar }) => {
       initial="initial"
       animate="animate"
       key="search_sidebar"
-      className="fixed right-0 top-0 h-[calc(100vh-8rem)] w-[300px] z-50 bg-red-300 rounded-md p-2 overflow-y-auto "
+      className="fixed right-0 pr-5 top-0 h-[calc(100vh-8rem)] w-full lg:w-[300px] z-50 bg-red-300 rounded-md p-2 overflow-y-auto "
     >
       <form className="relative flex flex-col justify-between items-center py-3 ">
         <button

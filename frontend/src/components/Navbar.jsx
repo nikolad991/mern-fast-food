@@ -8,18 +8,11 @@ import {
   UserIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
-import {
-  AiFillFacebook,
-  AiFillInstagram,
-  AiFillPhone,
-  AiFillTwitterSquare,
-  AiOutlineMail,
-} from "react-icons/ai";
 
 import Logo from "../assets/logo3.png";
 import MobileMenu from "./MobileMenu";
 import SearchSidebar from "./SearchSidebar";
-import { AnimatePresence } from "framer-motion";
+
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showSearchSidebar, setShowSearchSidebar] = useState(false);
@@ -110,11 +103,10 @@ const Navbar = () => {
       {showMobileMenu && (
         <MobileMenu setShowMobileMenu={setShowMobileMenu} cart={cart} />
       )}
-      <AnimatePresence>
-        {showSearchSidebar && (
-          <SearchSidebar setShowSearchSidebar={setShowSearchSidebar} />
-        )}
-      </AnimatePresence>
+
+      {showSearchSidebar && (
+        <SearchSidebar setShowSearchSidebar={setShowSearchSidebar} />
+      )}
     </>
   );
 };

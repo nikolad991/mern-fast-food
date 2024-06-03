@@ -25,23 +25,25 @@ const Menu = () => {
   };
   return (
     <section className=" bg-white pt-32">
-        <Helmet>
+      <Helmet>
         <title>Food Delivery | Menu </title>
       </Helmet>
-      <div className="flex justify-center py-10 gap-6 [&>button]:rounded-3xl [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 [&>button]:text-lg [&>button]:py-2 [&>button]:px-5">
-        {["All", "Burger", "Pizza", "Pancake"].map((category, index) => (
-          <button
-            key={index}
-            className={`transition duration-500 hover:bg-red-500 hover:border-transparent ${
-              selectedCategory === category
-                ? "!bg-red-600 !text-white !border-transparent"
-                : ""
-            }`}
-            onClick={handleCategoryChange}
-          >
-            {category}
-          </button>
-        ))}
+      <div className="flex justify-center py-10 gap-6 ">
+        <div className="flex gap-4 lg:w-3/4 justify-center [&>button]:rounded-lg [&>button]:border-2 [&>button]:border-yellow-500  [&>button]:text-neutral-800 lg:[&>button]:text-lg [&>button]:py-2 [&>button]:px-2">
+          {["All", "Burger", "Pizza", "Pancake"].map((category, index) => (
+            <button
+              key={index}
+              className={`transition duration-500 hover:bg-red-500 hover:border-transparent w-20 flex items-center justify-center ${
+                selectedCategory === category
+                  ? "!bg-red-600 !text-white !border-transparent"
+                  : ""
+              }`}
+              onClick={handleCategoryChange}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="xl:w-5/6  mx-auto gap-2 p-4 flex flex-wrap justify-center">
         {filteredProducts.map((product, index) => (

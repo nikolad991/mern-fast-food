@@ -53,7 +53,7 @@ const Cart = () => {
     }
   };
   return (
-    <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  p-10 ">
+    <div className="min-h-screen flex flex-col-reverse lg:flex-row justify-end gap-10  pt-36 px-5 lg:px-10 ">
       <Helmet>
         <title>{`Food Delivery | Cart (${cart.length})`}</title>
       </Helmet>
@@ -67,22 +67,22 @@ const Cart = () => {
               delay: index * 0.2,
               duration: 0.5,
             }}
-            className="flex lg:w-3/4  h-32 border border-neutral-300 transition duration-600 hover:border-red-100 hover:bg-red-50 "
+            className="flex lg:w-3/4  h-36 border border-neutral-300 transition duration-600 hover:border-red-100 hover:bg-red-50 "
           >
             <div className="flex w-1/6 h-full">
               <img
                 src={item.product.imageUrl}
-                className=" w-full h-full object-cover"
+                className="w-full h-full object-cover"
                 alt=""
               />
             </div>
             <div className="w-3/4 flex justify-between items-center p-4 ">
               <div className="px-7">
                 {" "}
-                <div className="font-semibold text-2xl">
+                <div className="font-semibold text-md xl:text-2xl">
                   {item.product.name}
                 </div>{" "}
-                <div>
+                <div className="text-sm xl:text-base">
                   {item.product?.options.map((option) => (
                     <div key={option.name}>
                       {option.name}: {option.default}
